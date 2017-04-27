@@ -1,0 +1,22 @@
+{
+  "name": "ra-simplevideoplayer01",
+  "version": "1.0.0",
+  "description": "ES6 video player using gulp or webpack, sass, and babel, (and other stuff)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j4y88/ra-simplevideoplayer01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j4y88/ra-simplevideoplayer01/issues"
+  },
+  "homepage": "https://github.com/j4y88/ra-simplevideoplayer01#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
