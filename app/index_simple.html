@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Video Player</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function onReady(e){
+            var videoFigureTag=document.getElementById('video_player');
+            var videoTag=document.querySelector('#video_player video');
+            //var videoAllAnchors=document.getElementsByTagName("a");
+            var getAllAnchors=document.querySelectorAll('#video_player figcaption a');
+            //gets all a tags under the branch of #video_player figcaption a, stores in array
+            console.log(getAllAnchors);
+            for(i=0; i<getAllAnchors.length; i++){
+                console.log(getAllAnchors[i].getAttribute('href'));
+                var currentAnchor = getAllAnchors[i];
+                currentAnchor.addEventListener('click',onAnchorClick,false);
+            }
+
+            function onAnchorClick(e){
+                e.preventDefault();
+                //prevent openning of video in new tab
+
+                var video = document.querySelector('#video_player video');
+                video.removeAttribute("control");
+                video.removeAttribute("poster");
+
+                var currentElement = e.target; //img
+                console.log(currentElement);
+
+                var currentLink = e.target.parentElement; //anchor
+                console.log(currentLink);
+
+                var currentHref = currentLink.getAttribute('href');
+                console.log(currentHref);
+                var source = document.querySelectorAll('#video_player video source');
+
+                source[0].src = currentHref; 
+                video.load();
+                video.play();
+            }
+        }
+        window.addEventListener("load",onReady, false);
+    </script>
+</head>
+<body>
+<h1>Welcome to My Video Player</h1>
+<figure id="video_player">
+    <video controls poster="images/nambia1.jpg">
+        <source src="./media/nambia1.mp4" type="video/mp4">
+        <source src="./media/nambia1.webm" type="video/webm">
+    </video>
+    <figcaption>
+        <a href="./media/nambia1.mp4"><img src="./images/nambia1.jpg" alt="Nambia Timelapse 1"></a>
+        <a href="./media/nambia2.mp4"><img src="./images/nambia2.jpg" alt="Nambia Timelapse 2"></a>
+        <a href="./media/nambia3.mp4"><img src="./images/nambia3.jpg" alt="Nambia Timelapse 3"></a>
+    </figcaption>
+</figure>
+
+</body>
+</html>
+
