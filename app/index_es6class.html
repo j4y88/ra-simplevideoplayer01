@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Class Video Player</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+  	class Car extends Object {
+  		constructor(color="Red"){ //gives color a default vaue if none is given
+  			super();
+  			this.type="";
+  			this.color=color;
+  			this.manufacturer="Ford";
+  			this.year="2017";
+  			this.transmission="Automatic";
+  			this.model="Focus";
+
+  			
+  			}
+  			startTheCar(){
+  				let x = () => {console.log("I am started");};
+  				x();
+  		}
+  		get engineType(){ //creates a property with the value of..
+  			return "its a V8! It's 1972!";
+			}
+			//set engineType(tyepOfEngine){
+			//	this.engineType = tyepOfEngine;
+			//}
+  	}
+
+
+  	let samsCar = new Car("Yellow");
+  	console.log(samsCar);
+  	console.log(samsCar.color);
+  	samsCar.color="Blue";
+		console.log(samsCar.color);
+
+  	let jessesCar = new Car("Unicorn");
+  	console.log(jessesCar);
+  	console.log(jessesCar.color);
+  	console.log(jessesCar.engineType);
+  	jessesCar.engineType="V6";
+  	console.log(jessesCar.engineType);
+  	jessesCar.startTheCar();
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

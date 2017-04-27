@@ -5,27 +5,85 @@
     <title>Simple Video Player</title>
     <link rel="stylesheet" href="./css/style.css">
     <script>
+        
+    class VideoPlayer extends Object {
+      constructor(videoFigureTag,videoTag,sourceTag,getAllAnchors){
+        super();
+        this.videoFigureTag= videoFigureTag;
+        this.videoTag= videoTag;
+        this.sourceTag= sourceTag;
+        this.allAnchors= getAllAnchors;
+      }
+    }
+
+        let es6Playground = () => {
+            const PI = Math.PI;
+            console.log(PI);
+
+            const a = 2;
+            
+            const multiply = (num) => {
+                //const a = 5;
+                return num * a;
+            }
+
+            const multiply = num => num * a;
+
+            console.log(multiply(3));
+
+            let result = (a==5?true:false);
+            console.log(result);
+            let choice = ""
+            let result = (a==5?choice='ok':choice='not ok');
+            console.log(choice);
+            
+            const numbers = [1,2,3,4];
+            let doubleFn = (num) => {
+              return num*2;
+            
+
+            //const doubled = numbers.map(doubleFn);
+            //console.log(doubled);
+
+            //const doubled = numbers.map((num) => {return num*2});
+            //console.log(doubled);
+            //shorter, and saves memory because not stored and used only within this function only
+
+            const doubled = numbers.map(num => num*2);
+            console.log(doubled);}
+        
 
         let onReady = (e) => {
-            const PI = Math.PI;
-
+            //es6Playground();
             let videoFigureTag=document.getElementById('video_player');
             let videoTag=document.querySelector('#video_player video');
+            let sourceTag=document.querySelector('#video_player video source');
             //let videoAllAnchors=document.getElementsByTagName("a");
             let getAllAnchors=document.querySelectorAll('#video_player figcaption a');
             //gets all a tags under the branch of #video_player figcaption a, stores in array
-            console.log(getAllAnchors);
+            //console.log(getAllAnchors);
+            
+
             let i=5; //this let ai does not enter the for statement
             for(let i=0; i<getAllAnchors.length; i++){ //this let ai is in scope of for statement only
                 //console.log(getAllAnchors[i].getAttribute('href'));
                 let currentAnchor = getAllAnchors[i];
-                console.log(i);
-                console.log(currentAnchor);
-                currentAnchor.addEventListener('click',onAnchorClick,false);
-            }
-            console.log('the value of ai here is ' +i)
+                //console.log(i);
+                //console.log(currentAnchor);
+                currentAnchor.addEventListener('click', onAnchorClick, false);
 
-            function onAnchorClick(e){
+            }
+
+            let videoPlayer = new VideoPlayer(videoFigureTag,videoTag,sourceTag,getAllAnchors);
+            console.log(videoPlayer.videoFigureTag);
+            console.log(videoPlayer.videoTag);
+            console.log(videoPlayer.sourceTag);
+            console.log(videoPlayer.allAnchors);
+            console.log(videoPlayer);
+            
+            //console.log('the value of ai here is ' +i)}
+
+            let onAnchorClick = (e) => {
                 e.preventDefault();
                 //prevent openning of video in new tab
 
@@ -34,21 +92,22 @@
                 video.removeAttribute('poster');
 
                 let currentElement = e.target; //img
-                console.log(currentElement);
+                //console.log(currentElement);
 
                 let currentLink = e.target.parentElement; //anchor
-                console.log(currentLink);
+                //console.log(currentLink);
 
                 let currentHref = currentLink.getAttribute('href');
-                console.log(currentHref);
+                //console.log(currentHref);
                 let source = document.querySelectorAll('#video_player video source');
 
                 source[0].src = currentHref; 
                 video.load();
                 video.play();
             }
-        }
+        
         window.addEventListener("load",onReady, false);
+
     </script>
 </head>
 <body>
